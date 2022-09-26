@@ -47,7 +47,10 @@ class RangeValidator {
     }
     
     validate(num) {
-      if (num >= this.from && num <= this.to) {
+      if(typeof num !== 'number' || isNaN(num)){
+        throw new TypeError(`${num} is Not a number`);
+      }
+      if (num <= this.from && num >= this.to) {
         return num;
       } else {
         throw new RangeError("num out of range");
